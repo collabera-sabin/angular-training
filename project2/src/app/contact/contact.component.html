@@ -1,0 +1,18 @@
+<div class="contact-info">
+  <h3><fa-icon [icon]="icons.faAddressCard"></fa-icon> Contact</h3>
+  <br />
+  <span>
+    <div class="line1">Address:
+      <pre>
+    {{ contact.address.line1 }}
+    {{ contact.address.line2 }}
+    {{ contact.address.city }}, {{ contact.address.state }}</pre>
+    </div>
+    <div class="postal-code">Postal code: {{ contact.address.postal_code }}</div>
+  </span>
+  <span>
+    <div class="phone"><fa-icon [icon]="icons.faPhone"></fa-icon> {{ contact.phone }}</div>
+    <div class="email"><fa-icon [icon]="icons.faMailBulk"></fa-icon> {{ contact.email }}</div>
+    <div class="country"><fa-icon [icon]="icons.faGlobe"></fa-icon> Country: {{ contact.address.country }}</div>
+  </span>
+</div>

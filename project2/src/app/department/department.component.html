@@ -1,0 +1,19 @@
+<div class="card" [ngClass]="{full, sub: sub > 0}" *ngFor="let subDepartment of data">
+    <img class="card-image" [src]="'data:image/svg+xml;base64,'+subDepartment.image" [alt]="subDepartment.name">
+    <div class="card-body">
+        <h2 class="card-title display-5">
+            <span *ngIf="sub>0">Sub-</span>Department of {{ subDepartment.name }}
+        </h2>
+        <br>
+        <p class="card-text"><app-about [about]="subDepartment.about"></app-about></p>
+        <br>
+        <app-contact [contact]="subDepartment.contact"></app-contact>
+        <div *ngIf="subDepartment.portfolio.length > 0">
+            <h3 class="card-subtitle mb-2" [ngClass]="{dark: sub > 0}">Portfolio</h3>
+            <app-portfolio [data]="subDepartment.portfolio"></app-portfolio>
+        </div>
+        <div class="card-container" *ngIf="full">
+            <app-department [full]="false" [data]="subDepartment.sub_departments" [sub]="1"></app-department>
+        </div>
+    </div>
+</div>

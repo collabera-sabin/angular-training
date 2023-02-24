@@ -1,0 +1,16 @@
+<div>
+  <div><input [(ngModel)]="subj1" min="1" max=10 type="number" placeholder="0"></div>
+  <div><input [(ngModel)]="subj2" min="1" max=10 type="number" placeholder="0"></div>
+  <div><input [(ngModel)]="subj3" min="1" max=10 type="number" placeholder="0"></div>
+  <div><input [(ngModel)]="subj4" min="1" max=10 type="number" placeholder="0"></div>
+  <div><input [(ngModel)]="subj5" min="1" max=10 type="number" placeholder="0"></div>
+
+  <button class='btn btn-primary' (click)="this.score = (parseFloat(subj1) + parseFloat(subj2) + parseFloat(subj3) + parseFloat(subj4) + parseFloat(subj5))/5"> Calculate Score </button>
+  <div>Avg: {{score}}</div>
+  <hr>
+  <span [ngSwitch]="true">
+    <button *ngSwitchCase="score>9" class="btn btn-success" disabled="disabled"> Great success </button>
+    <button *ngSwitchCase="score>=5 && score<=9" class="btn btn-success" disabled="disabled"> Success </button>
+    <button *ngSwitchDefault class="btn btn-danger" disabled="disabled"> Failed </button>
+  </span>
+</div>

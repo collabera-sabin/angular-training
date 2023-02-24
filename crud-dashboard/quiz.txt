@@ -1,0 +1,63 @@
+How do you handle HTTP requests in Angular?
+a) Using the HttpClient service
+b) Using the Http service
+c) Using the Request service
+d) Using the Response service
+Answer: a
+
+What is the purpose of the ngModel directive in Angular?
+a) To define a new component
+b) To render a component template
+c) To bind a component property to the view
+d) To create a two-way binding between a form control and a component property
+Answer: d
+
+How do you handle user input in Angular?
+a) Using event binding
+b) Using property binding
+c) Using interpolation
+d) Using template reference variables
+Answer: a
+
+What is the purpose of the "Router" service in Angular?
+a) To handle HTTP requests
+b) To manage form data
+c) To manage application state and navigation
+d) To manage server-side data
+Answer: c
+
+What is the purpose of the "async" pipe in Angular?
+a) To filter an observable stream
+b) To map an observable stream
+c) To sort an observable stream
+d) To subscribe to an observable stream
+Answer: d
+
+What is the purpose of the router-outlet directive in Angular?
+a) To define a new route
+b) To display the contents of a route
+c) To navigate to a new route
+d) To declare a new component
+Answer: b
+
+What is the purpose of the Angular CLI?
+a) To generate boilerplate code for Angular applications
+b) To create a development environment for Angular applications
+c) To manage dependencies for Angular applications
+d) All of the above
+
+Answer: d
+
+What is the purpose of the @ViewChild decorator in Angular?
+a) To access a child component or directive from the parent component
+b) To access an element in the template using its HTML ID
+c) To define a custom structural directive
+d) None of the above
+Answer: a
+
+How do you define a route in Angular?
+a) Using the @Injectable decorator
+b) Using the @Directive decorator
+c) Using the @NgModule decorator
+d) Using the RouterModule.forRoot method
+Answer: d

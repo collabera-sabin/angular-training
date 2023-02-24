@@ -1,0 +1,29 @@
+.spacer {
+    width: 50px;
+}
+.buttons {
+    margin-left: 50px;
+}
+.toolbar {
+    background: radial-gradient(at top left, #f91, #1976d2);
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 98%;
+    margin-left: 1%;
+    padding-left: 10px;
+    padding-top: 5px;
+    .banner {
+        font-size: 1.5rem;
+        margin: auto;
+        font-weight: bold;
+    }
+    .btn {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: 1px;
+    }
+}

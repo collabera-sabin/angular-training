@@ -1,0 +1,16 @@
+footer {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    background-color: #111;
+    width: 99vw;
+    
+    height: 50px;
+    text-align: center;
+    white-space: nowrap;
+    color: #eee;
+    span {
+        margin: auto;
+    }
+}

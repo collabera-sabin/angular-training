@@ -1,0 +1,37 @@
+<button class="btn btn-primary" style="float:right" (click)="doAdd()">Add</button>
+
+<h1 [hidden]="loading == 0">Loading...</h1>
+
+<table class="table table-striped table-hover table-dark">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.p_id}}</td>
+            <td>{{product.p_name}}</td>
+            <td>{{product.p_cost}}</td>
+            <td><button (click)="doEdit(product)">Edit</button></td>
+            <td><button (click)="doDelete(product.p_id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<table *ngIf="target !== null">
+    <tr>
+        <td>ID</td><td><input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="target.p_id"></td>
+        <td>Name</td><td><input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="target.p_name"></td>
+        <td>Cost</td><td><input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="target.p_cost"></td>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="perform()">{{operation}}</button>
+        </td>
+    </tr>
+</table>

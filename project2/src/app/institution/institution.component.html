@@ -1,0 +1,11 @@
+<div>
+    <span *ngIf="!skipLink; else elseBlock">
+        <a [routerLink]="['institution', data.name]">
+            <h1>{{data.name}}</h1>
+        </a>
+    </span>
+    <ng-template #elseBlock>
+        <h1>{{data.name}}</h1>
+    </ng-template>
+    <app-department [data]="data.departments" [full]="skipLink"></app-department>
+</div>
