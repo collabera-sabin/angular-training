@@ -1,0 +1,62 @@
+<div class="w-100">
+    {{user.role}}
+    <button class="btn btn-primary" *ngIf="user.role == 'HR'" style="float:right" (click)="doAdd()">Add Course</button>
+    <button class="btn btn-secondary" *ngIf="['HR', 'Manager'].includes(user.role)" (click)="viewHistory()">History</button>
+    <button class="btn btn-primary" *ngIf="user.role == 'Student'" style="float:right" (click)="viewHistory()">My
+        Courses</button>
+    <h1 [hidden]="loading == 0">Loading...</h1>
+</div>
+
+<table class="table table-striped table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Course name</th>
+            <th>Starting date</th>
+            <th>Duration(days)</th>
+            <th *ngIf="user.role == 'Student'">Apply</th>
+            <th *ngIf="user.role == 'Student'">Status</th>
+            <th *ngIf="user.role == 'Manager' || user.role == 'HR'">Attendance</th>
+            <th *ngIf="user.role == 'HR'">Edit</th>
+            <th *ngIf="user.role == 'HR'">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let training of trainings">
+            <td>{{training.name}}</td>
+            <td>{{training.startDate | date:'yyyy-MM-dd'}}</td>
+            <td>{{training.scope}}</td>
+            <td *ngIf="user.role == 'Student'"><button (click)='toggleApply(training)'>{{training.applied?"Cancel Application":"Apply"}}</button></td>
+            <td *ngIf="user.role == 'Student'">{{(training.applied && training.approved > -1)?((training.approved ==
+                1)?"approved":"rejected"):"N/A"}}</td>
+            <td *ngIf="user.role == 'Manager' || user.role == 'HR'"><button (click)='checkAttendance(training.id)'>Attendance</button></td>
+            <td *ngIf="user.role == 'HR'"><button (click)='doEdit(training)'>Edit</button></td>
+            <td *ngIf="user.role == 'HR'"><button (click)='doDelete(training.id)'>Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<table *ngIf="target !== null">
+    <tr>
+        <td>Course name</td>
+        <td><input class='form-control' type='text' [ngModelOptions]='{standalone: true}' [(ngModel)]='target.name'>
+        </td>
+    </tr>
+    <tr>
+        <td>Starting date</td>
+        <td>
+            <input class='form-control' type='date' [ngModelOptions]='{standalone: true}'
+                [ngModel]="target.startDate | date:'yyyy-MM-dd'" (ngModelChange)="target.startDate = $event">
+        </td>
+    </tr>
+    <tr>
+        <td>Duration(days)</td>
+        <td><input class='form-control' type='number' [ngModelOptions]='{standalone: true}' [(ngModel)]='target.scope'>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button (click)="perform()">{{operation}}</button>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let error of getErrorListEntries()">
+        <div *ngIf="error[1]" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ error[1] }}
+            <button type="button" class="btn close" style="position:absolute; right: 0; top: 0;" (click)="close(error[0])">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>

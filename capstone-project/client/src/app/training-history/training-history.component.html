@@ -1,0 +1,35 @@
+<div class="w-100">
+    {{user.role}}
+    <h1 [hidden]="loading == 0">Loading...</h1>
+</div>
+
+<table class="table table-striped table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Course name</th>
+            <th>Starting date</th>
+            <th>Duration(days)</th>
+            <th>Status</th>
+            <th *ngIf="user.role == 'Manager' || user.role == 'HR'">Attendance</th>
+            <th *ngIf="user.role == 'Student'">Attendance</th>
+            <th *ngIf="user.role == 'Student'">Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let training of trainings">
+            <td>{{training.name}}</td>
+            <td>{{training.startDate | date:'yyyy-MM-dd'}}</td>
+            <td>{{training.scope}}</td>
+            <td>{{training.status}}</td>
+            <td *ngIf="user.role == 'Manager' || user.role == 'HR'">
+                <button (click)='checkAttendance(training.id)'>Attendance</button>
+            </td>
+            <td *ngIf="user.role == 'Student'">
+                <button (click)='markAttendance(training.id)' [disabled]="training.attended">Mark attendance today</button>
+            </td>
+            <td *ngIf="user.role == 'Student'">
+                <button (click)='giveFeedback(training.id)' [disabled]="training.feedback">Feedback</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

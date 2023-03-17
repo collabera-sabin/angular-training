@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+.expand {
+    height: calc(100vh - 160px);
+}
+
+.form-group {
+    .alert {
+        margin-top: 5px;
+    }
+}
+
+table {
+    margin-top: 1em;
+}

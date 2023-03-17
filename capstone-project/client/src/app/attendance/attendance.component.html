@@ -1,0 +1,40 @@
+{{user.role}}
+<div *ngIf="user.role == 'HR'">
+    Managers:
+    <select [(ngModel)]="selectedManager" class="w-25">
+        <option *ngFor="let manager of managers" value="{{manager.id}}">{{manager.name}}</option>
+    </select>
+    <button class="w-50" style="float: right" (click)="assign()">Assign manager</button>
+</div>
+<table class="table table-striped table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Student name</th>
+            <th>Approval status</th>
+            <th>Attendance</th>
+            <th>Feedbacks</th>
+            <th *ngIf="user.role == 'Manager'">Approve</th>
+            <th *ngIf="user.role == 'Manager'">Reject</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of records">
+            <td>{{record.studentName}}</td>
+            <td>{{(record.approval > -1)?((record.approval == 1)?"approved":"rejected"):"pending"}}</td>
+            <td>
+                {{record.attendance}}
+                <button *ngIf="record.attendance > 0" (click)='viewAttendance(record.studentId, record.trainingId)'>View</button>
+            </td>
+            <td>
+                {{record.feedbacks}}
+                <button *ngIf="record.feedbacks > 0" (click)='viewFeedbacks(record.studentId, record.trainingId)'>View</button>
+            </td>
+            <td *ngIf="user.role == 'Manager'"><button (click)='approve(record.studentId, record.trainingId)'>Approve</button></td>
+            <td *ngIf="user.role == 'Manager'"><button (click)='reject(record.studentId, record.trainingId)'>Reject</button></td>
+            <!--
+            <td *ngIf="user.role == 'Manager'"><button (click)='checkAttendance(training)'>Attendance</button></td>
+            <td *ngIf="user.role == 'HR'"><button (click)='doEdit(training)'>Edit</button></td>
+            <td *ngIf="user.role == 'HR'"><button (click)='doDelete(training.id)'>Delete</button></td> -->
+        </tr>
+    </tbody>
+</table>
